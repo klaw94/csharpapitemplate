@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BookStoreApp.API.Data;
+using BookStoreApp.API.Models.Author;
+using AutoMapper;
 
 namespace BookStoreApp.API.Controllers
 {
@@ -14,26 +16,31 @@ namespace BookStoreApp.API.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly CsharpdemodbContext _context;
+        private readonly IMapper mapper;
+
         //This is dependency injection
-        public AuthorsController(CsharpdemodbContext context)
+        public AuthorsController(CsharpdemodbContext context, IMapper mapper)
         {
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: api/Authors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
+        public async Task<ActionResult<IEnumerable<AuthorReadOnlyDto>>> GetAuthors()
         {
-          if (_context.Authors == null)
-          {
-              return NotFound();
-          }
-            return Ok(await _context.Authors.ToListAsync());
+            if (_context.Authors == null)
+            {
+                return NotFound();
+            }
+            var authors = await _context.Authors.ToListAsync();
+            var authorsDtos =  mapper.Map<IEnumerable<AuthorReadOnlyDto>>(authors);
+            return Ok(authorsDtos);
         }
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Author>> GetAuthor(int id)
+        public async Task<ActionResult<AuthorReadOnlyDto>> GetAuthor(int id)
         {
           if (_context.Authors == null)
           {
@@ -46,14 +53,15 @@ namespace BookStoreApp.API.Controllers
                 return NotFound();
             }
 
-            return author;
+            return mapper.Map<AuthorReadOnlyDto>(author);
         }
 
         // PUT: api/Authors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuthor(int id, Author author)
+        public async Task<IActionResult> PutAuthor(int id, AuthorUpdateDto authorDto)
         {
+            var author = mapper.Map<Author>(authorDto);
             if (id != author.Id)
             {
                 return BadRequest();
@@ -83,12 +91,14 @@ namespace BookStoreApp.API.Controllers
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(Author author)
+        public async Task<ActionResult<AuthorCreateDto>> PostAuthor(AuthorCreateDto authorDto)
         {
-          if (_context.Authors == null)
-          {
-              return Problem("Entity set 'CsharpdemodbContext.Authors'  is null.");
-          }
+            var author = mapper.Map<Author>(authorDto);
+
+            if (_context.Authors == null)
+            {
+                return Problem("Entity set 'CsharpdemodbContext.Authors'  is null.");
+            }
             await _context.Authors.AddAsync(author);
             //We always neecd to save changes.
             await _context.SaveChangesAsync();

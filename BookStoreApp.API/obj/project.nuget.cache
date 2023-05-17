@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "J/l3VyOUOVKnERdsF8/6GVOTNU6QhgkrNfC55x+ugsC+TF+pxj10LcthMF0NQosB9hBM0TxsTL5bMkcqbFU9XQ==",
+  "dgSpecHash": "YFrp3JxeOWK6tNN2sLue4I/bE2cmlBzarNx7+Em+rh1vqpUP+u4P/IJDM8Ef4y6yuQumSwlVpe//SmX8tUZUUw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruiker\\source\\repos\\TutorialAPISQL\\BookStoreApp.API\\BookStoreApp.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

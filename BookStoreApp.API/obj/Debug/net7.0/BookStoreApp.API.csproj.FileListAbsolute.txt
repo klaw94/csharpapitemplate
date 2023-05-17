@@ -316,3 +316,5 @@ C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\obj\Debug\net7.0
 C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\obj\Debug\net7.0\BookStoreApp.API.genruntimeconfig.cache
 C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\obj\Debug\net7.0\ref\BookStoreApp.API.dll
 C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Gebruiker\source\repos\TutorialAPISQL\BookStoreApp.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

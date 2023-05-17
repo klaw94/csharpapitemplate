@@ -20,4 +20,6 @@ public partial class Book
     public double? Price { get; set; }
 
     public int? AuthorId { get; set; }
+
+    public virtual Author? Author { get; set; }
 }
